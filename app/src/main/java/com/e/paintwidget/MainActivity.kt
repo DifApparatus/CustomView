@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.paintwidget_view.*
 
 class MainActivity : AppCompatActivity(), PaintWidget.OnChangedListener {
 
@@ -14,10 +13,10 @@ class MainActivity : AppCompatActivity(), PaintWidget.OnChangedListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button.setOnClickListener({
+        showButton.setOnClickListener({
             paintwidget.visibility = View.VISIBLE
         })
-        button2.setOnClickListener({
+        hideButton.setOnClickListener({
             paintwidget.visibility = View.INVISIBLE
         })
         paintwidget.setOnChangedListener(this)

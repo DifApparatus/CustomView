@@ -56,7 +56,9 @@ class PaintWidget @JvmOverloads constructor(
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 val paintWidth = widthSeekBar.progress.toString()
                 widthValueTextView.text = paintWidth
-                listener?.onChanged(paintWidth, 1.toString())
+                val checkedButton = findViewById<RadioButton>(radiobutton_group_colors.checkedRadioButtonId)
+                val intColor = checkedButton.tag as Int
+                listener?.onChanged(paintWidth, String.format("#%06X", 0xFFFFFF and intColor))
             }
         })
         initAttributes()
@@ -109,9 +111,11 @@ class PaintWidget @JvmOverloads constructor(
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         radiobutton_group_colors.setOnCheckedChangeListener {
-                group, _ -> listener?.onChanged(widthSeekBar.progress.toString(),"2")
+                group, _ ->
             val checkedButton = findViewById<RadioButton>(group.checkedRadioButtonId)
-            setThumbColor(checkedButton.tag as Int)
+            val intColor = checkedButton.tag as Int
+            listener?.onChanged(widthSeekBar.progress.toString(), String.format("#%06X", 0xFFFFFF and intColor))
+            setThumbColor(intColor)
         }
     }
 
@@ -132,7 +136,7 @@ class PaintWidget @JvmOverloads constructor(
         }
         super.onRestoreInstanceState(state)
     }
-    companion object{
+    private companion object{
         private const val SUPER_STATE = "superState"
         private const val SEEKBAR_PROGRESS = "seekBarProgress"
     }
