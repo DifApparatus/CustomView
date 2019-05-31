@@ -7,6 +7,12 @@ import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * * Activity containing [PaintWidget] and [Button] that shows or hides [PaintWidget].
+ * Activity listens to width and color changes and shows Toast messages.
+ *
+ * @author Aliaksandr Shapkin
+ */
 class MainActivity : AppCompatActivity(), PaintWidget.OnChangedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {

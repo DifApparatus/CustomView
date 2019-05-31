@@ -20,6 +20,16 @@ import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.paintwidget_view.view.*
 
+/**
+ * [PaintWidget] based on [ConstraintLayout]. It contains  [SeekBar] and [RadioGroup] for setting paint.
+ * Attributes:
+ * seekBarWidth
+ * @property seekbarMaxWidth sets the seek bar maximum value
+ *  @property defaultColorPosition sets the default selected color item
+ *  @property firstItemColor sets the color for the first item
+ *
+ * @author Aliaksandr Shapkin
+ */
 class PaintWidget @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
